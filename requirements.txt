@@ -1,8 +1,5 @@
 streamlit
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> bb3201faf69aebe0b531c8f82e3a522425a5973c
+
 pandas
 numpy
 scikit-learn
@@ -10,9 +7,3 @@ matplotlib
 seaborn
 wordcloud
 requests
-<<<<<<< HEAD
-=======
-requests
->>>>>>> 7586f1e37764fac67b76dc7b8af83af3c4525c63
-=======
->>>>>>> bb3201faf69aebe0b531c8f82e3a522425a5973c

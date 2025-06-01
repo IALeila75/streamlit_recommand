@@ -1,79 +1,91 @@
+Système de Recommandation d'Articles
+====================================
 
-# RecoStreamlitApp – MVP de recommandation d’articles
+Cette application est un système de recommandation d’articles, développé en Python et déployé en mode serverless sur Azure Functions. L’interface utilisateur est réalisée avec Streamlit.
 
-Ce projet est un MVP fonctionnel de système de recommandation d’articles, développé dans le cadre de la construction d’un produit par une start-up fondée par Leïla (CTO) et Samia (CEO).
+------------------------------------
+Fonctionnalités
+------------------------------------
+- Exploration des données (visualisation des clics utilisateurs et des métadonnées des articles)
+- Trois méthodes de recommandation intégrées :
+  * ALS (filtrage collaboratif)
+  * Embeddings (similarité sémantique)
+  * Similarité d’articles (proximité de contenu)
+- Évaluation des performances via des métriques comparatives (Précision@10, Rappel@10, F1-score)
+- API Azure Function pour générer les recommandations
+- Interface interactive Streamlit pour tester les recommandations
 
----
+------------------------------------
+Structure du projet
+------------------------------------
+streamlit_recommand/
+│
+├── app.py                  -> Application Streamlit principale
+├── requirements.txt        -> Dépendances Python
+├── data/                   -> Dossier de données (CSV, Pickle, etc.)
+│
+├── README.txt              -> Ce fichier
+└── .gitignore              -> Fichiers et dossiers à ignorer par Git
 
-##  Fonctionnalité principale
+------------------------------------
+Installation
+------------------------------------
+1. Clonez ce dépôt GitHub :
+   git clone https://github.com/IALeila75/streamlit_recommand.git
+   cd streamlit_recommand
 
-> "En tant qu’utilisateur de l’application, je vais recevoir une sélection de cinq articles."
+2. Créez un environnement virtuel et activez-le :
+   python -m venv venv
+   # Sur Linux/Mac :
+   source venv/bin/activate
+   # Sur Windows :
+   venv\Scripts\activate
 
-L’utilisateur choisit un `user_id` et une méthode de recommandation. Il reçoit ensuite les 5 articles les plus pertinents selon :
+3. Installez les dépendances :
+   pip install -r requirements.txt
 
--  Collaborative filtering
--  Embedding vectoriel
--  Similarité d’articles
+------------------------------------
+Lancer l'application Streamlit
+------------------------------------
+streamlit run app.py
 
----
+L'application sera accessible dans votre navigateur à l'adresse :
+http://localhost:8501
 
-## Architecture retenue
+------------------------------------
+Déploiement de l'API Azure Function
+------------------------------------
+L’API de recommandation est déployée sur Azure Functions pour répondre aux requêtes de l’application Streamlit.
 
--  Système de recommandation exposé via **Azure Functions** (serverless)
--  Interface utilisateur simple via **Streamlit Cloud**
--  Données pré-chargées : fichiers `.csv` + `.pickle`
--  Requêtes HTTP entre front et backend
+- Endpoint : https://<nom_function_app>.azurewebsites.net/api/recommendations
+- Paramètres : user_id et type (als, embeddings, similarity)
 
----
+------------------------------------
+Résultats des performances
+------------------------------------
+Les modèles de recommandation sont évalués sur trois métriques :
+- Précision@10
+- Rappel@10
+- F1-score
 
-##  Structure du dépôt
+Ces résultats sont visibles dans la page "Évaluation des performances" de l’application Streamlit.
 
-```
-.
-├── streamlit_app.py           # Application Streamlit (frontend)
-├── requirements.txt           # Dépendances (streamlit, requests)
-└── .gitignore                 # Fichiers ignorés
-```
+------------------------------------
+Contribution
+------------------------------------
+1. Forkez ce projet.
+2. Créez une branche (git checkout -b ma-feature).
+3. Commitez vos changements (git commit -m 'Ajouter une nouvelle fonctionnalité').
+4. Poussez la branche (git push origin ma-feature).
+5. Créez une Pull Request.
 
----
+------------------------------------
+Licence
+------------------------------------
+Ce projet est sous licence MIT.
 
-## ️ Lancer l'application en local
-
-```bash
-pip install -r requirements.txt
-streamlit run streamlit_app.py
-```
-
----
-
-##  Déploiement cloud
-
-- **Backend Azure Function** : [https://apprecommand25.azurewebsites.net/api/reco_all](https://apprecommand25.azurewebsites.net/api/reco_all)
-- **Frontend Streamlit Cloud** : *(à compléter après déploiement)*
-
----
-
-##  Exemple d'appel API
-
-```bash
-GET /api/reco_all?user_id=18&method=embed
-```
-
-Réponse :
- 
-```json
-{
-  "user_id": 18,
-  "embedding": [{"article_id": 1001, "category_id": 1}, ...],
-  "similar": [{"article_id": 1003, "category_id": 2}, ...],
-  "collaborative": []
-}
-```
-
----
-
-##  Perspectives d'évolution
-
-- Intégration de feedback utilisateur (like/dislike)
-- Ajout de nouveaux articles et utilisateurs dynamiquement
-- Pipeline de mise à jour des recommandations
+------------------------------------
+Remerciements
+------------------------------------
+Merci à toute l'équipe et aux contributeurs pour leur soutien et leurs retours.
+N'hésitez pas à ouvrir une issue ou à contribuer au projet !
