@@ -1,0 +1,28 @@
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environnements virtuels
+.venv/
+venv/
+
+# Jupyter Notebooks checkpoints (au cas où)
+.ipynb_checkpoints/
+
+# Fichiers logs et temporaires
+*.log
+*.tmp
+
+# Fichiers de cache
+.cache/
+*.pickle
+*.pkl
+
+# Streamlit local config (facultatif)
+.streamlit/
+
+# Dossiers système
+.DS_Store
+Thumbs.db

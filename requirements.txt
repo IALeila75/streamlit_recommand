@@ -1,0 +1,12 @@
+streamlit
+<<<<<<< HEAD
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+wordcloud
+requests
+=======
+requests
+>>>>>>> 7586f1e37764fac67b76dc7b8af83af3c4525c63
